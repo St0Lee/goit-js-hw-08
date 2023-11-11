@@ -1,6 +1,6 @@
 const form = document.querySelector(".feedback-form");
 
-form.addEventListener("input", inputInForm);
+form.addEventListener("input", throttle(inputInForm, 500));
 form.addEventListener("submit", submitForm);
 
 
