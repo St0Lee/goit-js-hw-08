@@ -5,16 +5,19 @@ form.addEventListener("submit", submitForm);
 
 
 function inputInForm(event) {
-    const key = event.target.name;
-    const value = event.target.value;
-    saveToLS(key, value);
-    function saveToLS(key, value) {
-        localStorage.setItem(key, JSON.stringify(value));
+    const formData = {
+        email: form.elements.email.value,
+        message: form.elements.message.value,
     };
+    saveToLS(formData);
+};
+
+function saveToLS(formData) {
+    localStorage.setItem("feedback-form-state", JSON.stringify(formData));
 };
 
 function getData (key){
-    const data = localStorage.getItem(key);
+    const data = localStorage.getItem("feedback-form-state");
     try{
         return JSON.parse(data);
     }
